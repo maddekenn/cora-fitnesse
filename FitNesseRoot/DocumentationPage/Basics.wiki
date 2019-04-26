@@ -1,0 +1,18 @@
+!contents -R2 -g -p -f -h
+Everything in the system is a recordType. If we want to be able to store information about a book in the system, we need to create a recordType for book.
+
+'''Metadata'''
+
+The recordType defines two metadata groups, one for creating a new instance of the recordType, and one for updating an existing instance. 
+
+The metadata groups are the definition of the data needed to create and update an instance of that recordType. One essential part of those top level metadata groups are a child group with name in data recordInfo. The system expect this child group to exist and it expects it to contain:
+
+-  an atomic value with name in data "id" (optional in metadata group for new if id is to be auto generated)
+
+- a metadata record link with name in data "type" which links to record type recordType (NOT present in metadata group for new, just in metadata group for existing)
+
+- a metadata record link with name in data "datadivider" which links to record type system
+
+- an atomic value with name in data "tscreated" (NOT present in metadata group for new, just in metadata group for existing)
+
+- a metadata record link with name in data "createdBy" (NOT present in metadata group for new, just in metadata group for existing)

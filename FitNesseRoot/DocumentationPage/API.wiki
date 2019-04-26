@@ -1,0 +1,143 @@
+!contents -R2 -g -p -f -h
+RecordTypes are a core part of the metadata system. Everything that  is to be stored must be of a recordType. In fact, the RecordType itself  is a recordType.
+
+!2 '''List'''
+List all entries of a certain record type in the system:
+
+!3 URL syntax:
+/rest/record/{recordType}
+
+!3 HTTP method:
+GET
+
+!3 HTTP response:
+200
+
+!3 Response text:
+A json string with a list of records
+
+!3 Exceptions:
+A 404 response is given when no records of the requested recordType exists
+
+| '''Name''' | '''Description''' |
+| {recordType} | the recordType to list records of |
+
+'''Examples'''
+
+GET: /rest/record/recordType
+
+This will get you a list of all recordTypes. For every record in the list there is an action link “list” that can be used to list all records for that particular recordType
+
+GET: /rest/record/book
+
+This will get you all books.
+
+!2 '''Read'''
+Read a record
+
+!3 URL syntax:
+rest/record/{recordType}/{id}
+
+!3 HTTP method:
+GET
+
+!3 HTTP response:
+200
+
+!3 Response text:
+A json string representing the record
+
+!3 '''Exceptions'''
+A 404 response is given when the requested record does not exist
+
+| '''Name''' | ''' Description ''' |
+| {recordType} | the recordType to read |
+| {id} | the id of the record to read |
+
+!3 '''Examples'''
+GET: /rest/record/book/book:234
+
+The will get you the book record for book with id book:234
+
+!2 '''Create'''
+Create a record of a specific recordType
+
+!3 URL syntax:
+/rest/record/{recordType}
+
+!3 HTTP method:
+POST
+
+!3 HTTP response:
+201
+
+!3 Response text:
+A json string representing the record
+
+!3 Exceptions:
+| '''Name''' | '''Description''' |
+| {recordType} | the recordType to create a record of |
+
+!3 Body
+The body of the request need to contain a json representation of the object that is to be created
+
+'''Examples'''
+
+POST: /rest/record/book/
+
+creates a record of recordType book
+
+!2 '''Update'''
+Create a record of a specific recordType
+
+!3 URL syntax:
+/rest/record/{recordType}/{id}
+
+!3 HTTP method:
+POST
+
+!3 HTTP response:
+200
+
+!3 Response text:
+A json string representing the record
+
+| '''Name''' | '''Description''' |
+| {recordType} | the recordType of the record to update |
+| {id} | the id of the record to update |
+
+!3 Body
+The body of the request need to contain a json representation of the object that is to be updated
+
+'''Examples'''
+
+POST: /rest/record/book/book:567
+
+!2 '''Delete'''
+Read a record
+
+!3 URL syntax:
+rest/record/{recordType}/{id}
+
+!3 HTTP method:
+DELETE
+
+!3 HTTP response:
+200
+
+!3 Response text:
+No response text
+
+!3 '''Exceptions'''
+A 404 response is given when the requested record does not exist
+
+A 401 response is given if the user is not authorized to delete the record
+
+| '''Name''' | '''Description''' |
+| {recordType} | the recordType to delete |
+| {id} | the id of the record to delete |
+
+!3 '''Examples'''
+DELETE: /rest/record/book/book:234
+
+The will delete the record for book with id book:234 |
