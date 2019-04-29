@@ -83,9 +83,11 @@ The body of the request need to contain a json representation of the object that
 
 '''Examples'''
 
-POST: /rest/record/book/
+POST: /rest/record/coraText/
 
-creates a record of recordType book
+body: {"name":"text","children":[{"name":"recordInfo","children":[{"name":"id","value":"someText"},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"testSystem"}]}]},{"name":"textPart","children":[{"name":"text","value":"En testtext"}],"attributes":{"type":"default","lang":"sv"}},{"name":"textPart","children":[{"name":"text","value":"Some test text"}],"attributes":{"type":"alternative","lang":"en"}}]}
+
+creates a record of recordType text
 
 !2 '''Update'''
 Create a record of a specific recordType
@@ -111,7 +113,9 @@ The body of the request need to contain a json representation of the object that
 
 '''Examples'''
 
-POST: /rest/record/book/book:567
+POST: /rest/record/coraText/someText
+
+body:{"name":"text","children":[{"name":"recordInfo","children":[{"name":"id","value":"someText"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"coraText"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"141414"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"testSystem"}]},{"name":"tsCreated","value":"2019-04-29 11:04:44.382"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"141414"}]},{"name":"tsUpdated","value":"2019-04-29 11:04:44.382"}],"repeatId":"0"}]},{"name":"textPart","children":[{"name":"text","value":"En testtext"}],"attributes":{"type":"default","lang":"sv"}},{"name":"textPart","children":[{"name":"text","value":"Some better test text"}],"attributes":{"type":"alternative","lang":"en"}}]}
 
 !2 '''Delete'''
 Read a record
@@ -141,3 +145,6 @@ A 401 response is given if the user is not authorized to delete the record
 DELETE: /rest/record/book/book:234
 
 The will delete the record for book with id book:234 |
+
+!2 '''Validate'''
+Validate a record
