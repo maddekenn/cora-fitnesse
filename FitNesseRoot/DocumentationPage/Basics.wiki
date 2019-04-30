@@ -13,3 +13,28 @@ The metadata groups are the definition of the data needed to create and update a
  * an atomic value with name in data "tscreated" (NOT present in metadata group for new, just in metadata group for existing)
  * a metadata record link with name in data "createdBy" which links to record type user (NOT present in  metadata group for new, just in metadata group for existing)
  * a metadata group with name in data "updated", containing a link with name in data "updatedBy" which links to record type user and an atomic value with name in data "tsupdated" (NOT present in  metadata group for new, just in metadata group for existing)
+
+RecordType
+
+As mentioned before, the recordType defines the metadata groups that are needed to describe instances of the recordType. The recordType also defines multiple presentations, which are used to present the data of the two top level metadata groups in different ways. There are presentations for new form, existing form, view, list, menu and autocomplete.
+
+| id | The id of the recordType, for example "book" |
+| dataDivider | The system that the recordType belongs to. Must point to an instance of recordType "system" |
+| abstract | true/false. If true, instances can not be created, Abstract recordTypes are used as parent to other recordTypes, for example "authority" could be parent to recordTypes "person" and "organisation" |
+| parentId | Optional. Must point to an instance of recordType "recordType" |
+| metadataId | The top level metadataGroup for existing instances of the recordType. Must point to an instance of recordType "metadataGroup" |
+| newMetadataId | The top level metadataGroup for new instances of the recordType. Must point to an instance of recordType "metadataGroup" |
+| presentationViewId | A view presentation for the recordType. Presents data defined in the metadata group that "metadataId" links to. Must point to an instance of recordType "presentationGroup" |
+| presentationFormId | A form presentation for the recordType. Used for entering data for existing instances. Presents data defined in the metadata group that "metadataId" links to. Must point to an instance of recordType "presentationGroup" |
+| newPresentationFormId | A form presentation for the recordType. Used for entering data for new instances. Presents data defined in the metadata group that "newMetadataId" links to. Must point to an instance of recordType "presentationGroup" |
+| menuPresentationViewId | A menu presentation for the recordType. Used for showing an instance of the recordType in a menu. Presents data defined in the metadata group that "metadataId" links to. Must point to an instance of recordType "presentationGroup" |
+| listPresentationViewId | A list presentation for the recordType. Used for showing an instance of  the recordType in a list. Presents data defined in the metadata group  that "metadataId" links to. Must point to an instance of recordType "presentationGroup" |
+| autocompletePresentationView | A list presentation for the recordType. Used for showing an instance of the recordType when in a result in an autocomplete search. Presents data defined in the metadata group  that "metadataId" links to.Must point to an instance of recordType "presentationGroup" |
+| userSuppliedId | true/false. If true, the user provides the id of the instance. If false, the system autogenerates an id. |
+| textId | A text to shortly describe the recordType. Must point to an instance of recordType "coraText". |
+| defTextId | A definition text to more thoroughly describe the recordType. Must point to an instance of recordType "coraText". |
+| recordTypeSearchLink | A default search for the recordType. Must point to an instance of recordType "search" |
+| groupOfRecordType | The group the recordType belongs to. This is used to group recordTypes together, for example in a menu. |
+| filter | Must point to an instance of recordType "metadataGroup" |
+| filterPresentation | Must point to an instance of recordType "presentationGroup" |
+| public | true/false. If true, all instances of the recordType are allowed to be read (not edited or deleted) by all users, regardless if the user has been granted access to the recordType or not. |
