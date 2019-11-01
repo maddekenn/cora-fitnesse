@@ -23,7 +23,7 @@
 	<name>Fitnesse</name>
 
 	<properties>
-		<fitnesse.version>20180127</fitnesse.version>
+		<fitnesse.version>20190716</fitnesse.version>
 		<fitnesseintegration.version>2.0.0</fitnesseintegration.version>
 	</properties>
 
