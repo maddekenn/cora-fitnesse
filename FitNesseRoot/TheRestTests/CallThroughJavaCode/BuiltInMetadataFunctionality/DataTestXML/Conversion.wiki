@@ -1,0 +1,22 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!1 Testing conversion of recordType place
+!***> Convert place:22 from XML stored in Fedora to Coras Json format
+
+| Alvin To Cora Format Fixture |
+| type | AlvinXML | getJson? |
+| place | tramsXML | can not convert xml:se.uu.ub.cora.alvin.mixedstorage.parse.ParseException: Error converting place to Cora place: Can not read xml: Content is not allowed in prolog. |
+| place | {{{<metadata type="textVariable">
+<recordInfo><id>someTextVar</id><dataDivider>
+<linkedRecordType>system</linkedRecordType>
+<linkedRecordId>cora</linkedRecordId></dataDivider>
+</recordInfo><nameInData>someText</nameInData>
+<textId><linkedRecordType>text</linkedRecordType>
+<linkedRecordId>someTestText</linkedRecordId>
+</textId><defTextId><linkedRecordType>text</linkedRecordType>
+<linkedRecordId>someTestDefText</linkedRecordId>
+</defTextId><regEx>^[r]{4}$</regEx></metadata> }}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:22"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 20:20:38.346"},{"repeatId":"0","children":[{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2014-12-18 20:20:38.346"}],"name":"updated"},{"repeatId":"1","children":[{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2014-12-18 20:21:20.880"}],"name":"updated"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Linköping"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}},{"children":[{"name":"latitude","value":"58.42"},{"name":"longitude","value":"15.62"}],"name":"coordinates"},{"name":"country","value":"SE"},{"repeatId":"0","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"1367"}],"name":"identifier"}],"name":"authority","attributes":{"type":"place"}} |
+
+*!
